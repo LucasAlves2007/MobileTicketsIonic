@@ -6,12 +6,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-button expand="full" (click)="gerar('SP')">Senha Prioritária</ion-button>
+  <ion-button expand="full" (click)="gerar('SG')">Senha Geral</ion-button>
+  <ion-button expand="full" (click)="gerar('SE')">Senha Exame</ion-button>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <h2 *ngIf="senhaGerada">Senha: {{ senhaGerada.numero }}</h2>
 </ion-content>
