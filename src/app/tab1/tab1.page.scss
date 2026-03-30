@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+  text-align: center;
+  background: #f5f7fa;
+}
+
+.header h1 {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.header p {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.buttons ion-button {
+  margin-bottom: 15px;
+  height: 55px;
+  font-size: 16px;
+  border-radius: 12px;
+}
+
+.senha {
+  margin-top: 40px;
+}
+
+.numero {
+  font-size: 48px;
+  font-weight: bold;
+  color: #222;
+  margin-top: 10px;
+}
