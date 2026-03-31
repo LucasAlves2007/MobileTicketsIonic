@@ -1,27 +1,28 @@
 <ion-content class="container">
 
   <div class="header">
-    <h1>Emissão de Senhas</h1>
-    <p>Selecione o tipo de atendimento</p>
+    <h1>Mobile Tickets</h1>
+    <p>Retire sua senha</p>
   </div>
 
   <div class="buttons">
-    <ion-button expand="block" (click)="gerar('SP')">
-      Prioritário (SP)
+    <ion-button expand="block" class="btn sp" (click)="gerar('SP')">
+      Senha Prioritária
     </ion-button>
 
-    <ion-button expand="block" (click)="gerar('SG')">
-      Geral (SG)
+    <ion-button expand="block" class="btn sg" (click)="gerar('SG')">
+      Senha Geral
     </ion-button>
 
-    <ion-button expand="block" (click)="gerar('SE')">
-      Exames (SE)
+    <ion-button expand="block" class="btn se" (click)="gerar('SE')">
+      Retirada de Exames
     </ion-button>
   </div>
 
-  <div class="senha" *ngIf="senhaGerada">
+  <div class="card-senha" *ngIf="senhaGerada">
     <h2>Sua senha</h2>
-    <div class="numero">{{ senhaGerada.numero }}</div>
+    <h1 class="numero">{{ senhaGerada.numero }}</h1>
+    <p class="tipo">{{ senhaGerada.tipo }}</p>
   </div>
 
 </ion-content>
