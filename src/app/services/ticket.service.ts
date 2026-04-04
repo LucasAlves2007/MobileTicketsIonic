@@ -108,4 +108,19 @@ export class TicketService {
     return this.tickets.filter(t => t.tipo === tipo && t.status === 'finalizado').length;
   }
 
+  // 📋 Obter fila
+  obterFila(): Ticket[] {
+    return this.tickets.sort((a, b) => {
+      // Prioridade: esperando > atendendo > finalizado
+      const prioridade = { 'esperando': 0, 'atendendo': 1, 'finalizado': 2 };
+      const prioA = prioridade[a.status];
+      const prioB = prioridade[b.status];
+      
+      if (prioA !== prioB) return prioA - prioB;
+      
+      // Se mesma prioridade, ordenar por data
+      return new Date(a.dataEmissao).getTime() - new Date(b.dataEmissao).getTime();
+    });
+  }
+
 }

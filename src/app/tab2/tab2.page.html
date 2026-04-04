@@ -4,24 +4,68 @@
     <h1>🖥️ Painel de Atendimento</h1>
   </div>
 
+  <!-- Estatísticas -->
+  <div class="stats">
+    <div class="stat-card">
+      <span class="label">Emitidas</span>
+      <span class="value">{{ totalEmitidas }}</span>
+    </div>
+    <div class="stat-card">
+      <span class="label">Atendidas</span>
+      <span class="value">{{ totalAtendidas }}</span>
+    </div>
+    <div class="stat-card">
+      <span class="label">Aguardando</span>
+      <span class="value alert">{{ filaEmpera }}</span>
+    </div>
+  </div>
+
+  <!-- Senha Atual -->
+  <div class="card-chamando" *ngIf="senhaAtual">
+    <p class="label">🔴 ATENDENDO</p>
+    <h1 class="numero">{{ senhaAtual.numero }}</h1>
+    <p class="tipo">{{ getTipoLabel(senhaAtual.tipo) }}</p>
+    <p class="guiche" *ngIf="senhaAtual.guiche">Guichê {{ senhaAtual.guiche }}</p>
+    
+    <ion-button 
+      expand="block" 
+      color="danger" 
+      (click)="finalizar()"
+      class="btn-finalizar"
+    >
+      ✅ Finalizar Atendimento
+    </ion-button>
+  </div>
+
+  <!-- Botão Chamar Próximo -->
   <ion-button
     expand="block"
+    color="primary"
     (click)="chamar()"
+    class="btn-chamar"
+    [disabled]="filaEmpera === 0"
   >
-    Chamar Próxima Senha
+    📢 Chamar Próximo
   </ion-button>
 
-  <div
-    class="card-senha"
-    *ngIf="senhaAtual"
-  >
-    <h2>Chamando</h2>
-    <h1 class="numero">
-      {{ senhaAtual.numero }}
-    </h1>
-    <p>
-      {{ senhaAtual.tipo }}
-    </p>
+  <!-- Fila de Espera -->
+  <div class="fila-container">
+    <h2>📋 Fila de Espera</h2>
+    <div *ngIf="fila.length === 0" class="empty">
+      <p>Nenhuma senha na fila</p>
+      <p>😊 Parabéns, você está em dia!</p>
+    </div>
+    <ion-list *ngIf="fila.length > 0">
+      <ion-item *ngFor="let ticket of fila; let i = index" [className]="'item-' + ticket.status">
+        <ion-label>
+          <h2>{{ ticket.numero }}</h2>
+          <p>{{ getTipoLabel(ticket.tipo) }} • Espera: {{ calcularTempo(ticket) }}</p>
+        </ion-label>
+        <ion-badge slot="end" [color]="getBadgeColor(ticket.status)">
+          {{ ticket.status }}
+        </ion-badge>
+      </ion-item>
+    </ion-list>
   </div>
 
 </ion-content>
