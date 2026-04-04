@@ -1,7 +1,7 @@
 <ion-content class="container">
 
   <div class="header">
-    <h1>🖥️ Painel de Atendimento</h1>
+    <h1>Painel de Atendimento</h1>
   </div>
 
   <!-- Estatísticas -->
@@ -22,7 +22,7 @@
 
   <!-- Senha Atual -->
   <div class="card-chamando" *ngIf="senhaAtual">
-    <p class="label">🔴 ATENDENDO</p>
+    <p class="label">ATENDENDO</p>
     <h1 class="numero">{{ senhaAtual.numero }}</h1>
     <p class="tipo">{{ getTipoLabel(senhaAtual.tipo) }}</p>
     <p class="guiche" *ngIf="senhaAtual.guiche">Guichê {{ senhaAtual.guiche }}</p>
@@ -33,7 +33,7 @@
       (click)="finalizar()"
       class="btn-finalizar"
     >
-      ✅ Finalizar Atendimento
+      Finalizar Atendimento
     </ion-button>
   </div>
 
@@ -45,7 +45,7 @@
     class="btn-chamar"
     [disabled]="filaEmpera === 0"
   >
-    📢 Chamar Próximo
+    Chamar Próximo
   </ion-button>
 
   <!-- Fila de Espera -->
@@ -53,7 +53,7 @@
     <h2>📋 Fila de Espera</h2>
     <div *ngIf="fila.length === 0" class="empty">
       <p>Nenhuma senha na fila</p>
-      <p>😊 Parabéns, você está em dia!</p>
+      <p>Parabéns, você está em dia!</p>
     </div>
     <ion-list *ngIf="fila.length > 0">
       <ion-item *ngFor="let ticket of fila; let i = index" [className]="'item-' + ticket.status">

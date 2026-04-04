@@ -13,7 +13,7 @@ export class Tab2Page implements OnInit {
   fila: Ticket[] = [];
   totalEmitidas: number = 0;
   totalAtendidas: number = 0;
-  filaEmpera: number = 0;
+  filaEspera: number = 0;
 
   constructor(private ticketService: TicketService) {}
 
@@ -36,16 +36,16 @@ export class Tab2Page implements OnInit {
 
   private atualizarDados() {
     this.fila = this.ticketService.obterFila();
-    this.totalEmitidas = this.ticketService.totalEmitidas();
-    this.totalAtendidas = this.ticketService.totalAtendidas();
-    this.filaEmpera = this.fila.filter(t => t.status === 'esperando').length;
+    this.totalEmitidas = this.fila.length;
+    this.totalAtendidas = this.fila.filter(t => t.status === 'finalizado').length;
+    this.filaEspera = this.fila.filter(t => t.status === 'esperando').length;
   }
 
   getTipoLabel(tipo: string): string {
     const labels: { [key: string]: string } = {
-      'SP': '👔 Prioritário',
-      'SG': '👨‍👩‍👧‍👦 Gerência',
-      'SE': '⚡ Simples'
+      'SP': 'Prioritário',
+      'SG': 'Geral',
+      'SE': 'Exames'
     };
     return labels[tipo] || tipo;
   }
