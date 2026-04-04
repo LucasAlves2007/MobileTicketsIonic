@@ -1,4 +1,6 @@
+
 import { Component } from '@angular/core';
+import { TicketService } from '../services/ticket.service';
 
 @Component({
   selector: 'app-tab3',
@@ -8,6 +10,12 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {}
+  totalEmitidas = 0;
+
+  constructor(private ticketService: TicketService) {}
+
+  ionViewWillEnter() {
+    this.totalEmitidas = this.ticketService.totalEmitidas();
+  }
 
 }
