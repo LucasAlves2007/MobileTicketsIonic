@@ -129,7 +129,7 @@ O sistema disponibiliza:
 ### Tela de Relatórios
 ![Tela Relatórios](./imagens/tela-relatorios.png)
 
-## 6. Tecnologias Utilizadas
+## 7. Tecnologias Utilizadas
 
 * Angular
 * Ionic
@@ -139,7 +139,7 @@ O sistema disponibiliza:
 
 ---
 
-## 7. Estrutura do Sistema
+## 8. Estrutura do Sistema
 
 ```id="3r8nwb"
 src/
@@ -153,7 +153,7 @@ src/
 
 ---
 
-## 8. Decisões de Projeto
+## 9. Decisões de Projeto
 
 * Utilização de armazenamento em memória para simplificação do sistema
 * Separação da lógica de negócio em serviço (TicketService)
@@ -162,7 +162,7 @@ src/
 
 ---
 
-## 9. Limitações
+## 10. Limitações
 
 * Não há persistência em banco de dados
 * Dados são perdidos ao recarregar a aplicação
@@ -170,7 +170,7 @@ src/
 
 ---
 
-## 10. Possíveis Melhorias
+## 11. Possíveis Melhorias
 
 * Integração com backend (Node.js + MySQL)
 * Persistência de dados
@@ -180,7 +180,7 @@ src/
 
 ---
 
-## 11. Conclusão
+## 12. Conclusão
 
 O sistema atende aos requisitos propostos, implementando corretamente as regras de negócio e fornecendo uma simulação funcional de um ambiente de atendimento.
 
