@@ -87,6 +87,25 @@ export class TicketService {
   finalizar(ticket: Ticket) {
     ticket.status = 'finalizado';
   }
+  
+// 📊 Relatório detalhado
+relatorioDetalhado(): Ticket[] {
+  return this.tickets;
+}
+
+// ⏱️ Tempo médio geral
+tempoMedioGeral(): number {
+  const atendidos = this.tickets.filter(t => t.status === 'finalizado' && t.dataAtendimento);
+
+  if (atendidos.length === 0) return 0;
+
+  const total = atendidos.reduce((acc, t) => {
+    const tempo = new Date(t.dataAtendimento!).getTime() - new Date(t.dataEmissao).getTime();
+    return acc + tempo;
+  }, 0);
+
+  return Math.round((total / atendidos.length) / 60000); // em minutos
+}
 
   // 📊 Relatórios
 
