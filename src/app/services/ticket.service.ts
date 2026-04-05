@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 export interface Ticket {
   numero: string;
   tipo: 'SP' | 'SG' | 'SE';
-  status: 'esperando' | 'atendendo' | 'finalizado';
+  status: 'esperando' | 'atendendo' | 'finalizado'| 'abandonado';
   dataEmissao: Date;
   dataAtendimento: Date | null;
   guiche: number | null;
@@ -79,19 +79,26 @@ export class TicketService {
 
   // Chamar próximo (com prioridade)
   chamarProximo(): Ticket | null {
-    let ticket =
-      this.tickets.find((t) => t.tipo === 'SP' && t.status === 'esperando') ||
-      this.tickets.find((t) => t.tipo === 'SE' && t.status === 'esperando') ||
-      this.tickets.find((t) => t.tipo === 'SG' && t.status === 'esperando');
 
-    if (ticket) {
-      ticket.status = 'atendendo';
-      ticket.dataAtendimento = new Date();
-      ticket.guiche = Math.floor(Math.random() * 3) + 1; // guichê 1 a 3
-    }
+  let ticket =
+    this.tickets.find(t => t.tipo === 'SP' && t.status === 'esperando') ||
+    this.tickets.find(t => t.tipo === 'SE' && t.status === 'esperando') ||
+    this.tickets.find(t => t.tipo === 'SG' && t.status === 'esperando');
 
-    return ticket || null;
+  if (!ticket) return null;
+
+  // REGRA DOS 5% (abandonos)
+  if (ticket.tipo === 'SE' && Math.random() < 0.05) {
+    ticket.status = 'abandonado'; // abandonou
+    return this.chamarProximo(); // chama o próximo automaticamente
   }
+
+  ticket.status = 'atendendo';
+  ticket.dataAtendimento = new Date();
+  ticket.guiche = Math.floor(Math.random() * 3) + 1;
+
+  return ticket;
+}
 
   // Finalizar atendimento
   finalizar(ticket: Ticket) {
@@ -146,7 +153,7 @@ export class TicketService {
   obterFila(): Ticket[] {
     return [...this.tickets].sort((a, b) => {
       // Prioridade: esperando > atendendo > finalizado
-      const prioridade = { esperando: 0, atendendo: 1, finalizado: 2 };
+      const prioridade = { esperando: 0, atendendo: 1, finalizado: 2, abandonado: 2 };
       const prioA = prioridade[a.status];
       const prioB = prioridade[b.status];
 
