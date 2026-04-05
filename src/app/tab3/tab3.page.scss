@@ -1,16 +1,135 @@
 .container {
-	--background: linear-gradient(135deg, #020617, #0f172a);
+	--background: linear-gradient(135deg, #0f172a, #1e293b);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	padding: 20px;
-	color: white;
+	color: #fff;
 }
 
 .header {
-	margin-bottom: 16px;
+	text-align: center;
+	margin-bottom: 30px;
+
+	h1 {
+		font-size: 26px;
+		font-weight: bold;
+		margin: 0;
+	}
+
+	p {
+		color: #94a3b8;
+		margin: 8px 0 0;
+	}
+}
+
+.stats {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 12px;
+	margin-bottom: 20px;
+
+	.stat-card {
+		background: rgba(255, 255, 255, 0.1);
+		padding: 15px;
+		border-radius: 12px;
+		text-align: center;
+		border: 1px solid rgba(255, 255, 255, 0.2);
+
+		.label {
+			display: block;
+			font-size: 12px;
+			opacity: 0.8;
+			margin-bottom: 5px;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+		}
+
+		.value {
+			display: block;
+			font-size: 24px;
+			font-weight: bold;
+		}
+	}
 }
 
 .card {
 	background: rgba(255, 255, 255, 0.05);
+	border-radius: 16px;
 	padding: 20px;
-	border-radius: 12px;
+	margin-bottom: 18px;
+	backdrop-filter: blur(10px);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+	h2 {
+		font-size: 16px;
+		color: #94a3b8;
+		margin: 0 0 12px 0;
+	}
+}
+
+.tipo-row {
+	display: grid;
+	gap: 12px;
+
+	p {
+		display: flex;
+		justify-content: space-between;
+		gap: 16px;
+		margin: 0;
+		padding: 12px 14px;
+		border-radius: 14px;
+		background: rgba(255, 255, 255, 0.04);
+		border-radius: 8px;
+
+		strong {
+			min-width: 32px;
+			font-size: 0.95rem;
+		}
+
+		span {
+			text-align: right;
+			color: rgba(226, 232, 240, 0.82);
+		}
+	}
+}
+
+.tempo-card {
 	text-align: center;
+
+	h1 {
+		font-size: 42px;
+		margin: 0;
+	}
+}
+
+
+.details-card {
+	ion-list {
+		background: transparent;
+	}
+
+	ion-item {
+		--background: rgba(255, 255, 255, 0.04);
+		--border-color: rgba(255, 255, 255, 0.1);
+		margin-bottom: 10px;
+		border-radius: 14px;
+		--color: white;
+	}
+
+	ion-label h2 {
+		font-weight: 700;
+	}
+}
+
+@media (max-width: 640px) {
+	.stats {
+		grid-template-columns: 1fr;
+	}
+
+	.tipo-row p {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 4px;
+	}
 }

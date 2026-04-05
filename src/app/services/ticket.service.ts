@@ -87,7 +87,6 @@ export class TicketService {
   finalizar(ticket: Ticket) {
     ticket.status = 'finalizado';
   }
-  
 // 📊 Relatório detalhado
 relatorioDetalhado(): Ticket[] {
   return this.tickets;
