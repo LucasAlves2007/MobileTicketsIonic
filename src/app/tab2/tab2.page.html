@@ -16,7 +16,7 @@
     </div>
     <div class="stat-card">
       <span class="label">Aguardando</span>
-      <span class="value alert">{{ filaEmpera }}</span>
+      <span class="value alert">{{ filaEspera }}</span>
     </div>
   </div>
 
@@ -43,14 +43,14 @@
     color="primary"
     (click)="chamar()"
     class="btn-chamar"
-    [disabled]="filaEmpera === 0"
+    [disabled]="filaEspera === 0"
   >
     Chamar Próximo
   </ion-button>
 
   <!-- Fila de Espera -->
   <div class="fila-container">
-    <h2>📋 Fila de Espera</h2>
+    <h2>Fila de Espera</h2>
     <div *ngIf="fila.length === 0" class="empty">
       <p>Nenhuma senha na fila</p>
       <p>Parabéns, você está em dia!</p>

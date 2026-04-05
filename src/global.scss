@@ -36,6 +36,11 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
 
+ion-button {
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
+
 :root {
   --bg-principal: #0b3bb7;
   --azul-principal: #276dd5;

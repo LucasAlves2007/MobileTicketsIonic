@@ -133,6 +133,28 @@ export class TicketService {
     return this.tickets;
   }
 
+  // Total de senhas emitidas
+  totalEmitidas(): number {
+    return this.tickets.length;
+  }
+
+  // Total de senhas atendidas (finalizadas)
+  totalAtendidas(): number {
+    return this.tickets.filter((t) => t.status === 'finalizado').length;
+  }
+
+  // Total de senhas por tipo
+  totalPorTipo(tipo: 'SP' | 'SG' | 'SE'): number {
+    return this.tickets.filter((t) => t.tipo === tipo).length;
+  }
+
+  // Total de senhas atendidas por tipo
+  atendidasPorTipo(tipo: 'SP' | 'SG' | 'SE'): number {
+    return this.tickets.filter(
+      (t) => t.tipo === tipo && t.status === 'finalizado',
+    ).length;
+  }
+
   // Tempo médio geral
   tempoMedioGeral(): number {
     const atendidos = this.tickets.filter(

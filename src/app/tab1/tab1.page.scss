@@ -27,13 +27,31 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
+  position: relative;
+  z-index: 1;
 }
 
-.btn {
+.btn,
+.buttons ion-button {
   height: 60px;
   font-size: 16px;
   font-weight: bold;
   border-radius: 12px;
+  cursor: pointer;
+  pointer-events: auto !important;
+  touch-action: manipulation;
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.buttons ion-button:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+.buttons ion-button:active {
+  transform: scale(0.98);
 }
 
 /* CORES */
@@ -57,7 +75,7 @@
   padding: 25px;
   text-align: center;
   backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .card-senha h2 {
