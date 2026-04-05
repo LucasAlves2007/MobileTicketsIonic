@@ -11,6 +11,7 @@ export class Tab3Page {
 
   totalEmitidas = 0;
   totalAtendidas = 0;
+  totalAbandonadas = 0;
 
   spTotal = 0;
   sgTotal = 0;
@@ -33,6 +34,7 @@ export class Tab3Page {
   atualizar() {
     this.totalEmitidas = this.ticketService.totalEmitidas();
     this.totalAtendidas = this.ticketService.totalAtendidas();
+    this.totalAbandonadas = this.ticketService.totalAbandonadas();
 
     this.spTotal = this.ticketService.totalPorTipo('SP');
     this.sgTotal = this.ticketService.totalPorTipo('SG');

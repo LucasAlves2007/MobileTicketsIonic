@@ -15,6 +15,11 @@
       <span class="label">Atendidas</span>
       <span class="value">{{ totalAtendidas }}</span>
     </div>
+
+    <div class="stat-card abandonado">
+      <span class="label">Abandonadas</span>
+      <span class="value">{{ totalAbandonadas }}</span>
+    </div>
   </div>
 
   <div class="card">
@@ -44,6 +49,9 @@
             Atendimento: {{ ticket.dataAtendimento | date:'short' }}
           </p>
           <p *ngIf="ticket.guiche">Guichê: {{ ticket.guiche }}</p>
+          <p [style.color]="ticket.status === 'abandonado' ? 'red' : 'black'">
+            status: {{ ticket.status }}
+          </p>
         </ion-label>
       </ion-item>
     </ion-list>

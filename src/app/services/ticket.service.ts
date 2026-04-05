@@ -148,6 +148,10 @@ export class TicketService {
     return this.tickets.filter((t) => t.status === 'finalizado').length;
   }
 
+  totalAbandonadas() {
+    return this.tickets.filter((t) => t.status === 'abandonado').length;
+  }
+
   // por tipo
   totalPorTipo(tipo: 'SP' | 'SG' | 'SE') {
     return this.tickets.filter((t) => t.tipo === tipo).length;
