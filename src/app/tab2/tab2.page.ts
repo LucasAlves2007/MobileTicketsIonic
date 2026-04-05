@@ -43,9 +43,9 @@ export class Tab2Page implements OnInit {
 
   getTipoLabel(tipo: string): string {
     const labels: { [key: string]: string } = {
-      'SP': '👔 Prioritário',
-      'SG': '👨‍👩‍👧‍👦 Gerência',
-      'SE': '⚡ Simples'
+      'SP': 'Senha Prioritária',
+      'SG': 'Senha Geral',
+      'SE': 'Senha Retirada Exame'
     };
     return labels[tipo] || tipo;
   }
